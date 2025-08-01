@@ -16,7 +16,7 @@ class TttPrc:
       verbose=False
     )
 
-  def status(self, config="xoxxox/config_tttlc_000", **dicprm):
+  def status(self, config="xoxxox/config_tttlcp_000", **dicprm):
     diccnf = Custom.update(config, dicprm)
     # 設定：全般
     self.numtmp = diccnf["numtmp"]
