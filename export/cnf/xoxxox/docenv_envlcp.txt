@@ -4,8 +4,8 @@ ENV OPTAPT=""
 #ENV OPTAPT="-o Acquire::AllowInsecureRepositories=true -o Acquire::AllowDowngradeToInsecureRepositories=true"
 RUN apt-get ${OPTAPT} -y update
 RUN apt-get ${OPTAPT} -y upgrade
-RUN apt-get ${OPTAPT} -y build-essential cmake ninja-build
-RUN apt-get ${OPTAPT} -y libopenblas-dev
+RUN apt-get ${OPTAPT} -y install build-essential cmake ninja-build
+RUN apt-get ${OPTAPT} -y install libopenblas-dev
 RUN apt-get ${OPTAPT} -y install python3
 RUN apt-get ${OPTAPT} -y install pip
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
