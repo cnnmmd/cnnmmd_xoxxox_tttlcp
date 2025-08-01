@@ -2,7 +2,7 @@
   "nmodel": "gemma-3n-E2B-it-Q8_0.gguf",
   "numtrd": 4,
   "prmmax": 4,
-  "tknmax": 16,
+  "tknmax": 32,
   "numtmp": 0.7,
   "numtop": 0.9,
   "status": "これは、僕と妹の会話だ。妹は僕のことが大好きで、いつも、いろいろなことを答えてくれる：",
