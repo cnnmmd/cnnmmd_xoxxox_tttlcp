@@ -1,0 +1,23 @@
+FROM ubuntu:22.04
+
+ENV OPTAPT=""
+#ENV OPTAPT="-o Acquire::AllowInsecureRepositories=true -o Acquire::AllowDowngradeToInsecureRepositories=true"
+RUN apt-get ${OPTAPT} -y update
+RUN apt-get ${OPTAPT} -y upgrade
+RUN apt-get ${OPTAPT} -y build-essential cmake ninja-build
+RUN apt-get ${OPTAPT} -y libopenblas-dev
+RUN apt-get ${OPTAPT} -y install python3
+RUN apt-get ${OPTAPT} -y install pip
+RUN ln -s /usr/bin/python3.10 /usr/bin/python
+RUN ARC=$(uname -m) && \
+  if test "${ARC}" = "x86_64"; \
+  then \
+    CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=Intel10_64lp" \
+    pip install --no-cache-dir llama-cpp-python; \
+  fi \
+  if test "${ARC}" = "arm64"; \
+  then \
+    CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS" \
+     pip install --no-cache-dir llama-cpp-python; \
+  fi
+RUN pip install aiohttp

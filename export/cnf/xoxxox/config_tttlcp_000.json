@@ -1,0 +1,14 @@
+{
+  "nmodel": "gemma-3n-E2B-it-Q8_0.gguf",
+  "numtrd": 4,
+  "prmmax": 4,
+  "tknmax": 16,
+  "numtmp": 0.7,
+  "numtop": 0.9,
+  "status": "これは、私と助言者の会話だ。助言者は深い洞察力があり、いつも端的に、１６字以内で答えてくれる：",
+  "rolslf": "私",
+  "roloth": "助言者",
+  "inislf": "おはよう",
+  "inioth": "おはよう",
+  "nuloth": "え〜と"
+}

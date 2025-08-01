@@ -1,0 +1,16 @@
+networks:
+  default:
+    name: xoxxox_netmid
+    external: true
+services:
+  xoxxox_tttnai:
+    image: xoxxox_envlcp:001
+    container_name: xoxxox_tttlcp
+    volumes:
+    - ../../../export:/opt/common
+    - ../../../import/cnnmmd_xoxxox_tttlcp/applcp:/opt/applcp
+    env_file:
+    - ./envdir.txt
+    ports:
+    - 17301:80
+    command: "/opt/python/bin/python /opt/common/bin/xoxxox/srvttt.py --engine xoxxox/engine_tttlcp"
