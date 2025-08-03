@@ -3,7 +3,7 @@ networks:
     name: xoxxox_netmid
     external: true
 services:
-  xoxxox_tttnai:
+  xoxxox_tttlcp:
     image: xoxxox_envlcp:001
     container_name: xoxxox_tttlcp
     volumes:
