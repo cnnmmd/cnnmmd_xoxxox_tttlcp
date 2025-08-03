@@ -67,7 +67,7 @@ class TttPrc:
     #print("infdec[" + infdec + "]", flush=True) # DBG
     # 結果：加工
     try:
-      elmagt = re.findall(self.txtdst + self.txtdef + "(.*)", infdec)[0]
+      elmagt = re.findall(self.dictlk["txtdst"] + self.dictlk["txtdef"] + "(.*)", infdec)[0]
     except Exception as e:
       elmagt = ""
     if elmagt == "":
