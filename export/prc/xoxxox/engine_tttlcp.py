@@ -25,6 +25,9 @@ class TttPrc:
     self.frmusr = "{txtsrc}{txtdef}{elmusr}\n"
     self.frmagt = "{txtdst}{txtdef}{elmagt}\n"
     # 設定：個別
+    self.numtmp = diccnf["numtmp"]
+    self.numtop = diccnf["numtop"]
+    self.maxtkn = diccnf["tknmax"]
     self.maxbdy = diccnf["prmmax"]
     self.nulagt = diccnf["nuloth"]
     self.dictlk = {
@@ -49,7 +52,7 @@ class TttPrc:
     prompt = strlog
     infenc = self.objmdl(
       prompt,
-      max_tokens=self.tknmax,
+      max_tokens=self.maxtkn,
       temperature=self.numtmp,
       top_p=self.numtop,
       stop=None,
