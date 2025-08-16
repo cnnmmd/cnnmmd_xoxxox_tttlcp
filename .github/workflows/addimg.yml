@@ -1,0 +1,15 @@
+name: "addimg"
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  packages: write
+jobs:
+  call:
+    uses: cnnmmd/manage_docenv/.github/workflows/addimg_003.yml@master
+    with:
+      rep: "cnnmmd/cnnmmd_xoxxox_tttlcp"
+      nam: "xoxxox"
+      env: "envlcp"
+      ver: "001"
+      opt: ""

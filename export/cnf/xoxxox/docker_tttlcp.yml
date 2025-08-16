@@ -4,7 +4,7 @@ networks:
     external: true
 services:
   xoxxox_tttlcp:
-    image: xoxxox_envlcp:001
+    image: xoxxox/envlcp:001
     container_name: xoxxox_tttlcp
     volumes:
     - ../../../export:/opt/common
