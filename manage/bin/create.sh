@@ -12,12 +12,14 @@ function getmdl {
   local mdltgt=${1} ; shift
   local mdlurl=${1} ; shift
 
-  cd "${pthmdl}"
-  if test ! -e "${mdltgt}"
+  if cd "${pthmdl}"
   then
-    if cnfrtn "import: ${mdltgt}: ${mdlurl}"
+    if test ! -e "${mdltgt}"
     then
-      curl -LO "${mdlurl}" -o "${mdltgt}"
+      if cnfrtn "import: ${mdltgt}: ${mdlurl}"
+      then
+        curl -LO "${mdlurl}" -o "${mdltgt}"
+      fi
     fi
   fi
 }
