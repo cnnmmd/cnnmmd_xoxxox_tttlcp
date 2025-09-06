@@ -24,7 +24,6 @@ class TttPrc:
         n_gpu_layers=numgpu,
         verbose=False
       )
-      ngl
       self.mdlold = mdlcrr
     self.conlog = LibLog.getlog(diccnf["conlog"]) # LOG
     self.numtmp = diccnf["numtmp"]
