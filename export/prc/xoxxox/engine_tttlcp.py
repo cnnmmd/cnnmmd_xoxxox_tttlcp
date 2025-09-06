@@ -8,20 +8,23 @@ class TttPrc:
   def __init__(self, config="xoxxox/config_tttlcp_000", **dicprm):
     diccnf = Custom.update(config, dicprm)
     self.pthmdl = "/opt/applcp/prm"
-    self.numctx = 1024
     self.mdlold = ""
 
   def status(self, config="xoxxox/config_tttlcp_000", **dicprm):
     diccnf = Custom.update(config, dicprm)
     mdlcrr = diccnf["nmodel"]
     numtrd = diccnf["numtrd"]
+    numctx = diccnf["numctx"]
+    numgpu = diccnf["numgpu"]
     if mdlcrr != self.mdlold:
       self.objmdl = Llama(
         model_path=f"{self.pthmdl}/{mdlcrr}",
-        n_ctx=self.numctx,
+        n_ctx=numctx,
         n_threads=numtrd,
+        n_gpu_layers=numgpu,
         verbose=False
       )
+      ngl
       self.mdlold = mdlcrr
     self.conlog = LibLog.getlog(diccnf["conlog"]) # LOG
     self.numtmp = diccnf["numtmp"]

@@ -1,0 +1,10 @@
+services:
+  xoxxox_tttlcp:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: ["gpu"]
+    command: "python /opt/common/bin/xoxxox/srvttt.py --engine xoxxox/engine_tttlcp"
