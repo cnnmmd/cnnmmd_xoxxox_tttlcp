@@ -50,8 +50,8 @@ class TttPrc:
       txtifr = rawifr["text"]
     txtifr = txtifr.strip()
     print("txtifr[" + txtifr + "]", flush=True) # DBG
-    txtres, txtana = self.conlog.arrres(txtifr) # LOG
+    txtres, txtopt = self.conlog.arrres(txtifr) # LOG
     print("txtres[" + txtres + "]", flush=True) # DBG
-    print("txtana[" + txtana + "]", flush=True) # DBG
+    print("txtana[" + txtopt + "]", flush=True) # DBG
     self.conlog.catres(txtres) # LOG
-    return txtres
+    return (txtres, txtopt)

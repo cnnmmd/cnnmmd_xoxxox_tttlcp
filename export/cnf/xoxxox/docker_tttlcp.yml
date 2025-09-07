@@ -13,4 +13,4 @@ services:
     - ./envdir.txt
     ports:
     - 17301:80
-    command: "python /opt/common/bin/xoxxox/srvttt.py --engine xoxxox/engine_tttlcp"
+    command: "python /opt/common/bin/xoxxox/srvttt_opt.py --engine xoxxox/engine_tttlcp"
