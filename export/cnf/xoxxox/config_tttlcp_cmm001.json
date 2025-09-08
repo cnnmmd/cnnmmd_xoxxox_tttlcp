@@ -1,8 +1,9 @@
 {
-  "nmodel": "gemma-3n-E2B-it-Q8_0.gguf",
+  "expert": "xoxxox/tttlcp_cmm001",
   "conlog": "xoxxox/prompt_scr001",
   "maxlog": 4,
-  "tknmax": 64,
+  "nmodel": "gemma-3n-E2B-it-Q8_0.gguf",
+  "maxtkn": 64,
   "numtmp": 0.7,
   "numtop": 0.9,
   "numtrd": 4,
