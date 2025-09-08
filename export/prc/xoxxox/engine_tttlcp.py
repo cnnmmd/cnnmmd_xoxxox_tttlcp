@@ -55,6 +55,6 @@ class TttPrc:
     print("txtifr[" + txtifr + "]", flush=True) # DBG
     txtres, txtopt = self.conlog[self.expert].arrres(txtifr) # LOG
     print("txtres[" + txtres + "]", flush=True) # DBG
-    print("txtana[" + txtopt + "]", flush=True) # DBG
+    print("txtopt[" + txtopt + "]", flush=True) # DBG
     self.conlog[self.expert].catres(txtres) # LOG
     return (txtres, txtopt)
