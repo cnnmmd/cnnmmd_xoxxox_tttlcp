@@ -29,6 +29,7 @@ class TttPrc:
     self.numtmp = diccnf["numtmp"]
     self.numtop = diccnf["numtop"]
     self.maxtkn = diccnf["maxtkn"]
+    self.expert = diccnf["expert"]
     if not (self.expert in self.conlog):
       self.conlog[self.expert] = LibLog.getlog(diccnf["conlog"]) # LOG
       self.conlog[self.expert].catsys(diccnf) # LOG
