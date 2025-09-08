@@ -5,12 +5,13 @@ from xoxxox.shared import Custom, LibLog
 #---------------------------------------------------------------------------
 
 class TttPrc:
-  def __init__(self, config="xoxxox/config_tttlcp_000", **dicprm):
+  def __init__(self, config="xoxxox/config_tttlcp_cmm001", **dicprm):
     diccnf = Custom.update(config, dicprm)
     self.pthmdl = "/opt/applcp/prm"
     self.mdlold = ""
+    self.conlog = {}
 
-  def status(self, config="xoxxox/config_tttlcp_000", **dicprm):
+  def status(self, config="xoxxox/config_tttlcp_cmm001", **dicprm):
     diccnf = Custom.update(config, dicprm)
     mdlcrr = diccnf["nmodel"]
     numtrd = diccnf["numtrd"]
@@ -25,15 +26,16 @@ class TttPrc:
         verbose=False
       )
       self.mdlold = mdlcrr
-    self.conlog = LibLog.getlog(diccnf["conlog"]) # LOG
     self.numtmp = diccnf["numtmp"]
     self.numtop = diccnf["numtop"]
-    self.maxtkn = diccnf["tknmax"]
-    self.conlog.catsys(diccnf) # LOG
+    self.maxtkn = diccnf["maxtkn"]
+    if not (self.expert in self.conlog):
+      self.conlog[self.expert] = LibLog.getlog(diccnf["conlog"]) # LOG
+      self.conlog[self.expert].catsys(diccnf) # LOG
 
   def infere(self, txtreq):
-    prompt = self.conlog.catreq(txtreq) # LOG
-    print("prompt[" + prompt + "]", flush=True) # DBG
+    prompt = self.conlog[self.expert].catreq(txtreq) # LOG
+    print("prompt[", prompt, "]", sep="", flush=True) # DBG
     rawifr = self.objmdl(
       prompt,
       max_tokens=self.maxtkn,
@@ -50,8 +52,8 @@ class TttPrc:
       txtifr = rawifr["text"]
     txtifr = txtifr.strip()
     print("txtifr[" + txtifr + "]", flush=True) # DBG
-    txtres, txtopt = self.conlog.arrres(txtifr) # LOG
+    txtres, txtopt = self.conlog[self.expert].arrres(txtifr) # LOG
     print("txtres[" + txtres + "]", flush=True) # DBG
     print("txtana[" + txtopt + "]", flush=True) # DBG
-    self.conlog.catres(txtres) # LOG
+    self.conlog[self.expert].catres(txtres) # LOG
     return (txtres, txtopt)
