@@ -8,9 +8,10 @@
   "numtop": 0.9,
   "numtrd": 4,
   "status": "これは、僕と妹の会話だ。妹は僕のことが大好きで、いつも、いろいろなことを答えてくれる：",
-  "rolslf": "僕",
-  "roloth": "妹",
-  "inislf": "おはよう",
-  "inioth": "おはよう",
-  "nuloth": "え〜と"
+  "rolusr": "僕",
+  "rolagt": "妹",
+  "iniusr": "おはよう",
+  "iniagt": "おはよう",
+  "nuloth": "え〜と",
+  "sepcnv": "＞"
 }
