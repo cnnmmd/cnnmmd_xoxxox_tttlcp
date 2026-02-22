@@ -7,6 +7,8 @@
   "numtmp": 0.7,
   "numtop": 0.9,
   "numtrd": 4,
+  "numctx": 1024,
+  "numgpu": 0,
   "status": "これは、僕と妹の会話だ。妹は僕のことが大好きで、いつも、いろいろなことを答えてくれる：",
   "rolusr": "僕",
   "rolagt": "妹",
