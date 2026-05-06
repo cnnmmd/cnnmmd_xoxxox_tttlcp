@@ -1,0 +1,30 @@
+FROM ubuntu:24.04
+
+ENV OPTAPT=""
+#ENV OPTAPT="-o Acquire::AllowInsecureRepositories=true -o Acquire::AllowDowngradeToInsecureRepositories=true"
+RUN \
+  apt-get ${OPTAPT} -y update && \
+  apt-get ${OPTAPT} -y upgrade && \
+  apt-get ${OPTAPT} -y install python3 python3-venv && \
+  apt-get ${OPTAPT} -y install build-essential cmake ninja-build libopenblas-dev && \
+  apt-get ${OPTAPT} -y install libvulkan-dev vulkan-tools mesa-vulkan-drivers glslc glslang-tools && \
+  rm -rf /var/lib/apt/lists/*
+
+ENV DIRVIR=/env/python
+RUN python3 -m venv ${DIRVIR}
+
+ENV CMAKE_BUILD_PARALLEL_LEVEL=1
+ENV MAKEFLAGS=-j1
+
+RUN ARC=$(uname -m) && \
+  if test "${ARC}" = 'x86_64'; \
+  then \
+    CMAKE_ARGS='-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=Intel10_64lp -DGGML_VULKAN=ON' \
+    ${DIRVIR}/bin/pip3 install --no-cache-dir llama-cpp-python; \
+  fi; \
+  if test "${ARC}" = 'aarch64'; \
+  then \
+    CMAKE_ARGS='-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS -DGGML_VULKAN=ON' \
+    ${DIRVIR}/bin/pip3 install --no-cache-dir llama-cpp-python; \
+  fi
+RUN ${DIRVIR}/bin/pip3 install --no-cache-dir aiohttp

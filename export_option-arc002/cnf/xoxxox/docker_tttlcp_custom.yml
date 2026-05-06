@@ -1,0 +1,5 @@
+services:
+  xoxxox_tttlcp:
+    devices:
+    - /dev/dri
+    command: "/env/python/bin/python /opt/common/bin/xoxxox/srvttt.py --engine xoxxox/engine_tttlcp"

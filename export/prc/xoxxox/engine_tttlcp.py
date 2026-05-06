@@ -23,12 +23,13 @@ class TttPrc:
         n_ctx=numctx,
         n_threads=numtrd,
         n_gpu_layers=numgpu,
-        verbose=False
+        verbose=True
       )
       self.mdlold = mdlcrr
     self.numtmp = diccnf["numtmp"]
     self.numtop = diccnf["numtop"]
     self.maxtkn = diccnf["maxtkn"]
+    self.chaend = None if diccnf.get("chaend") in (None, []) else diccnf["chaend"]
     self.expert = diccnf["expert"]
     if not (self.expert in self.conlog):
       self.conlog[self.expert] = LibLog.getlog(diccnf["conlog"]) # LOG
@@ -42,7 +43,7 @@ class TttPrc:
       max_tokens=self.maxtkn,
       temperature=self.numtmp,
       top_p=self.numtop,
-      stop=None,
+      stop=self.chaend,
       echo=False
     )
     print("rawifr[", rawifr, "]", sep="", flush=True) # DBG
